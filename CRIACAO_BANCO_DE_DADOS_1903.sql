@@ -23,11 +23,11 @@ CREATE TABLE Organizacao
 	CNPJ VARCHAR(15) NOT NULL,
 	Email VARCHAR(150) NOT NULL,
 	Senha VARCHAR (30) NOT NULL,
-	Numero VARCHAR (100) NOT NULL, -- Para poder colocar mais de um n˙mero ex: 9999-9999;9998-8888
+	Numero VARCHAR (100) NOT NULL, -- Para poder colocar mais de um n√∫mero ex: 9999-9999;9998-8888
 	Site VARCHAR (150),
 	Instagram VARCHAR(150),
 	Facebook VARCHAR(150),
-	Vakaquinha VARCHAR(150), -- Caso queria contribuir com dinheiro ser· redirecionada para a Vakinha Online
+	Vakaquinha VARCHAR(150), -- Caso queria contribuir com dinheiro ser√° redirecionada para a Vakinha Online
 	Endereco VARCHAR (200) NOT NULL,
 	Municipio VARCHAR (150) NOT NULL,
 	CEP VARCHAR(20) NOT NULL,
@@ -43,8 +43,8 @@ CREATE TABLE Animal
 	Porte VARCHAR (20) NOT NULL,
 	Idade VARCHAR (20) NOT NULL,
 	Sexo VARCHAR (25) NOT NULL,
-	TipoAnimal char NOT NULL, -- Identificar se È gato ou cachorro
-	Limitacoes VARCHAR(150) null, -- Caso o animal esteja em algum tratamento de doenÁa, ou n„o goste crianÁas por exemplo
+	TipoAnimal char NOT NULL, -- Identificar se √© gato ou cachorro
+	Limitacoes VARCHAR(150) null, -- Caso o animal esteja em algum tratamento de doen√ßa, ou n√£o goste crian√ßas por exemplo
 	Descricao VARCHAR(150) NOT NULL, -- Dados sobre o animal, comportamento e etc
 	Castrado BIT NOT NULL,
 	VacinacaoEmDia BIT NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE AnimalFavorito
 	IdUsuario INT NOT NULL
 )
 
-CREATE TABLE InteresseAnimal -- Quando clicar no bot„o de tenho interesse, ir· popular esta tabela e mandar um e-mail para ong respons·vel
+CREATE TABLE InteresseAnimal -- Quando clicar no bot√£o de tenho interesse, ir√° popular esta tabela e mandar um e-mail para ong respons√°vel
 (
 	IdInteresse INT NOT NULL PRIMARY KEY IDENTITY (1,1),
 	IdAnimal INT NOT NULL,
@@ -116,4 +116,20 @@ CREATE TABLE Doacao
 	FOREIGN KEY(IdOrg) REFERENCES Organizacao(IdOrg),
 	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 )
+
+-- ADICIONA COLUNA PARA RECUPERA√á√ÉO DE SENHA
+
+  BEGIN 
+
+  ALTER TABLE Usuario
+  ADD  TokenRecuperacao VARCHAR(15) null;
+
+  END
+
+  BEGIN 
+
+  ALTER TABLE Organizacao
+  ADD  TokenRecuperacao VARCHAR(15) null;
+
+  END
 
